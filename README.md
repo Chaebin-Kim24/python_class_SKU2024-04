@@ -61,4 +61,4 @@ def phone_sales(input):
   output = []
   return output
 ```
-
+채점은 여러 테스트 케이스들에 대해서 통과한 개수를 기준으로 합니다.  
