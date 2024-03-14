@@ -15,6 +15,11 @@
 수업 오픈채팅방이 개설되었습니다. 수업 공지 내용을 전달할 예정이니 참여 부탁드립니다.
 
 [https://open.kakao.com/o/gYu9jZfg](https://open.kakao.com/o/gYu9jZfg)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode.PNG">
+  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode.PNG">
+  <img alt="파이썬 로고" src="img/Python_QRcode.PNG">
+</picture>
 
 
 
