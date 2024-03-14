@@ -16,9 +16,9 @@
 
 [https://open.kakao.com/o/gYu9jZfg](https://open.kakao.com/o/gYu9jZfg)
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode.PNG">
-  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode.PNG">
-  <img alt="파이썬 로고" src="img/Python_QRcode.PNG">
+  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode_Small.PNG">
+  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode_Small.PNG">
+  <img alt="파이썬 로고" src="img/Python_QRcode_Small.PNG">
 </picture>
 
 
