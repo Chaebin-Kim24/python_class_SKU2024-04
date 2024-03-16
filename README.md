@@ -40,6 +40,8 @@ C/C++ 코드를 파이썬 코드로 바꿔서 제출하는 것입니다.
 
 C/C++ 코드 중 마지막에 있는 심화학습은 숙제에서 제외입니다.
 
+> [!WARNING]
+> [2장 변수와 연산자.cpp](https://github.com/Chaebin-Kim24/python_class_SKU2024-04/tree/2512f7c749d7df457e9fa6de579a509ae20c6dee/%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C)의 LAB2-6에서 문제는 result = result + num을 하고 result를 출력하는 것인데, c/c++ 코드에서는 num을 출력하는 것으로 되어있었습니다. result 출력과 num 출력 모두 정답처리하겠습니다.
 ---
 
 ### 교과서
