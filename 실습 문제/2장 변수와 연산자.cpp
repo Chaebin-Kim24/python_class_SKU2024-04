@@ -183,8 +183,8 @@ int main()
     double num = 0, result = 0;
     num = 1;
     result = result + num;
-    std::cout << num << std::endl; // C++ 출력
-    printf("%f\n", num); // C 출력
+    std::cout << result << std::endl; // C++ 출력
+    printf("%f\n", result); // C 출력
 
     std::cout << "\nLAB 2-7\n";
     // LAB 2-7 : 산술연산자 써보기 (LAB 2-6에서 이어집니다)
