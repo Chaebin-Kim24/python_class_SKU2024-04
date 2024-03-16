@@ -11,6 +11,8 @@
 
 수업 오픈채팅방이 개설되었습니다. 수업 공지를 여기서도 똑같이 전달할 예정이니 많은 참여 부탁드립니다.
 
+참여 코드는 0314입니다.
+
 <picture>
   <img alt="오픈채팅방 QR코드" src="img/Python_QRcode.PNG" width="90" height="90">
 </picture>
