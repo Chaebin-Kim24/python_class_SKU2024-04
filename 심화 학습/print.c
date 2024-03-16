@@ -5,7 +5,6 @@
 //
 
 #include <stdio.h>
-#include <stdarg.h>
 
 char* sep = " ";
 char* end = "\n";
