@@ -1,10 +1,7 @@
 # python_class_SKU2024-04
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="img/python-logo-transparent2.png">
-  <source media="(prefers-color-scheme: dark)" srcset="img/python-logo-transparent2.png">
-  <img alt="파이썬 로고" src="img/python-logo-transparent2.png">
+  <img alt="파이썬 로고" src="img/python-logo-transparent.png" width="90" height="90">
 </picture>
-
 
 서경대학교 파이썬 강의 4분반 2024년 1학기 수업 (강좌코드: EE1201-04, EN1004-04) 홈페이지입니다.
 
@@ -14,13 +11,11 @@
 
 수업 오픈채팅방이 개설되었습니다. 수업 공지를 여기서도 똑같이 전달할 예정이니 많은 참여 부탁드립니다.
 
-[https://open.kakao.com/o/gYu9jZfg](https://open.kakao.com/o/gYu9jZfg)
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode_Small.PNG">
-  <source media="(prefers-color-scheme: dark)" srcset="img/Python_QRcode_Small.PNG">
-  <img alt="파이썬 로고" src="img/Python_QRcode_Small.PNG">
+  <img alt="오픈채팅방 QR코드" src="img/Python_QRcode.PNG" width="90" height="90">
 </picture>
 
+[https://open.kakao.com/o/gYu9jZfg](https://open.kakao.com/o/gYu9jZfg)
 
 
 ---
@@ -34,7 +29,7 @@ C/C++ 코드를 파이썬 코드로 바꿔서 제출하는 것입니다.
 
 제출기한은 다음주 수업시간 (3/21) 전까지입니다.
 
-제 이메일 chaebinkim@skuniv.ac.kr 로 소스코드를 보내주시면 실행해서 채점하겠습니다.
+이메일 chaebinkim@skuniv.ac.kr 로 소스코드를 보내주시면 실행해서 채점하겠습니다.
 
 에디터는 어떤 프로그램을 쓰셔도 무방합니다.
 
