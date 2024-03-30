@@ -1,7 +1,7 @@
 
 ### 4장 함수 추가 자료 (시험 범위 아님)
 ## 함수 매개변수에서 \*\* (별표 두개)와 \* (별표 한개)가 무슨 일을 하나?
-출처 - [What does ** (double star/asterisk) and * (star/asterisk) do for parameters?](https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters)) (저작권 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/))
+출처 - [stackoverflow: What does ** (double star/asterisk) and * (star/asterisk) do for parameters?](https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters)) (저작권 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/))
 
 `*args`와 `**kwargs`가 다음의 함수 정의에서 어떤 의미를 가지고 있나?
 ```python3
@@ -107,7 +107,7 @@ def func(parg1, parg2, /, pkarg1, pkarg2,  *, kwarg1, kwarg2):
 
 
 ## 어떻게 함수 데코레이터 여러개를 만들고 이어서 동작시키는가?
-출처 - [stackoverflow How do I make function decorators and chain them together?](https://stackoverflow.com/a/1594484/464744) (저작권 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
+출처 - [stackoverflow: How do I make function decorators and chain them together?](https://stackoverflow.com/a/1594484/464744) (저작권 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
 
 파이썬에서 다음과 같은 일을 하는 데코레이터 두개를 어떻게 만들 수 있을까?
 
