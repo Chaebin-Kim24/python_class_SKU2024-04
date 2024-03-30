@@ -1,11 +1,115 @@
 
 ### 4장 함수 추가 자료 (시험 범위 아님)
+## 함수 매개변수에서 \*\* (별표 두개)와 \* (별표 한개)가 무슨 일을 하나?
+출처 - [What does ** (double star/asterisk) and * (star/asterisk) do for parameters?](https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters)) (저작권 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/))
 
+`*args`와 `**kwargs`가 다음의 함수 정의에서 어떤 의미를 가지고 있나?
+```python3
+def foo(x, y, *args):
+    pass
+
+def bar(x, y, **kwargs):
+    pass
+```
+
+답변 -
+
+`*args`와 `**kwargs`는 흔히 쓰이는 관용적인 표현으로, 함수에 임의의 개수의 인자를 받을 수 있게 한다. 
+파이썬 튜토리얼의 [함수 정의 더 보기](https://docs.python.org/ko/3/tutorial/controlflow.html#more-on-defining-functions) 섹션에 설명되어 있다.
+
+`*args`는 모든 위치 인자를 [튜플로](https://docs.python.org/ko/3/tutorial/controlflow.html#arbitrary-argument-lists) 받는다:
+
+```python
+def foo(*args):
+    for a in args:
+        print(a)
+
+foo(1)
+# 1
+
+foo(1, 2, 3)
+#1
+#2
+#3
+```
+
+`**kwargs`는 모든 키워드 인자를 딕셔너리로 받는다:
+```python
+def bar(**kwargs):
+    for a in kwargs:
+        print(a, kwargs[a])
+
+bar(name='one', age=27)
+# name one
+# age 27
+```
+
+`*args`와 `**kwargs`는 일반 인자와 같이 쓰여서 정해진 개수의 인자와 가변 개수 인자를 받게 해준다:
+```
+def foo(kind, *args, bar=None, **kwargs):
+    print(kind, args, bar, kwargs)
+
+foo(123, 'a', 'b', apple='red)
+# 123 ('a', 'b') None {'apple':'red'}
+```
+
+반대로 함수 호출을 할 때 `*`과 `**`을 쓸 수 있다:
+```
+def foo(a, b, c):
+    print(a, b, c)
+
+obj = {'b':10, 'c':'lee'}
+
+foo(100, **obj)
+# 100 10 lee
+```
+
+`*l` 표현의 또 다른 쓰임새는 함수를 호출할 때 **인자 리스트 언패킹**을 하는 것이다.
+```python
+def foo(bar, lee):
+    print(bar, lee)
+
+baz = [1, 2]
+
+foo(*baz)
+# 1 2
+```
+
+파이썬 3에서는 `*l`을 대입 연산의 오른쪽에서 쓰는 것 ([Extended Iterable Unpacking](https://peps.python.org/pep-3132/))이 가능하다, 다만 이 맥락에서는 튜플 대신 리스트를 얻는다:
+
+```python
+first, *rest = [1, 2, 3, 4]
+#first = 1
+#rest = [2, 3, 4]
+```
+
+또한 파이썬 3에서는 새로운 문법을 추가했다(참조 [Keyword-Only Arguments](https://peps.python.org/pep-3102/)):
+
+```python3
+def func(arg1, arg2, arg3, *, kwarg1, kwarg2):
+    pass
+```
+이와 같은 함수는 위치 인자를 세개까지만 받을 수 있고, `*` 뒤에 오는 모든 매개변수는 키워드 인자로만 받을 수 있다.
+
+또한 파이썬 3에서는 위치 인자로만 받을 수 있는 매개 변수에 대한 새로운 문법을 추가했다
+(참조 [Python Positional-Only Parameters](https://peps.python.org/pep-0570/)):
+
+```python3
+def func(parg1, parg2, /, pkarg1, pkarg2,  *, kwarg1, kwarg2):
+    pass
+```
+이와 같은 함수는 `/` 앞에 있는 모든 매개변수는 위치 인자로만 받을 수 있고, `*` 뒤에 오는 모든 매개변수는 키워드 인자로만 받을 수 있다.
+
+### 알림:
+파이썬 `dict`, 키워드 인자를 전달하는데 쓰이는 문법, 의 순서는 임의로 정해진다. 하지만, 파이썬 3.6+에서 키워드 인자는
+삽입 순서를 기억할 것이 보장된다. "`**kwargs`의 요소 순서는 이제 키워드 인자가 함수에 전달된 순서에 해당한다." - [파이썬 3.6의 새로운 기능](https://docs.python.org/ko/3/whatsnew/3.6.html). 사실, CPython 3.6의 모든 딕셔너리는 구현 세부사항으로 
+삽입 순서를 기억하고, 이것이 파이썬 3.7에서 표준이 되었다. 
+
+
+## 어떻게 함수 데코레이터 여러개를 만들고 이어서 동작시키는가?
 출처 - [stackoverflow How do I make function decorators and chain them together?](https://stackoverflow.com/a/1594484/464744) (저작권 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))
 
-질문 - 어떻게 함수 데코레이터 여러개를 만들고 이어서 동작시키나요?
-
-파이썬에서 다음과 같은 일을 하는 데코레이터 두개를 어떻게 만들 수 있을까요?
+파이썬에서 다음과 같은 일을 하는 데코레이터 두개를 어떻게 만들 수 있을까?
 
 ```python
 @make_bold
