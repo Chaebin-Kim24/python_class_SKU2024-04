@@ -859,7 +859,7 @@ print(reverse_string("A man, a plan, a canoe, pasta, heros, rajahs, a coloratura
 ```
 
 ---
-### 3장 파이썬 프로그래밍 코딩 테스트 실습 문제
+### 3장 파이썬 프로그래밍 코딩 테스트 실습 문제 (시험 범위 아님)
 [가장 많이 받은 선물](https://school.programmers.co.kr/learn/courses/30/lessons/258712?language=python3)
 
 ```python
