@@ -796,7 +796,7 @@ decorated_function_with_arguments(c2, "Howard")
 
 즐거운 시간을 보내고 데코레이터를 위한 데코레이터를 작성해보자:
 ```python
-def decorator_with_args(decorator_to_enhance):
+def decorator_maker_factory(decorator_with_starargs):
     """
     이 함수의 입력값은 임의의 인자를 받는 범용 데코레이터 함수다.
     이 함수의 출력값은, "범용 데코레이터와 기능이 같지만 인자로 데코레이션할 함수 하나만 받는 데코레이터"를 반환하는 "데코레이터 제조" 함수다.
@@ -810,7 +810,7 @@ def decorator_with_args(decorator_to_enhance):
         def decorator_wrapper(func):
        
             # 범용 데코레이터를 실행해서 반환받은 래퍼 함수를 그대로 반환한다
-            return decorator_to_enhance(func, *args, **kwargs)
+            return decorator_with_starargs(func, *args, **kwargs)
         
         return decorator_wrapper
     
@@ -820,8 +820,8 @@ def decorator_with_args(decorator_to_enhance):
 ```python
 # 범용 데코레이터로 쓸 함수를 만들고, 데코레이터를 여기에 붙인다 :-)
 # 잊지 말라, 매개변수 리스트는 "decorator(func, *args, **kwargs)"다
-@decorator_with_args 
-def decorated_decorator(func, *args, **kwargs): 
+@decorator_maker_factory
+def decorator_with_starargs(func, *args, **kwargs): 
     def wrapper(function_arg1, function_arg2):
         print("Decorated with {0} {1}".format(args, kwargs))
         return func(function_arg1, function_arg2)
@@ -829,7 +829,7 @@ def decorated_decorator(func, *args, **kwargs):
     
 # 그리고나서 함수를 새로 데코레이션된 데코레이터로 데코레이션한다.
 
-@decorated_decorator(42, 404, 1024)
+@decorat_with_starargs(42, 404, 1024)
 def decorated_function(function_arg1, function_arg2):
     print("Hello {0} {1}".format(function_arg1, function_arg2))
 
