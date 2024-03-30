@@ -174,3 +174,116 @@ else:
 
 ```
 
+### LAB 3-4
+```python
+print(num >=1 and num <= 10)
+
+age = 10
+print('age =', age)
+if (age > 10 and age < 19):
+    print('청소년입니다.')
+
+age = 12
+print('age =', age)
+if (age > 10 and age < 19):
+    print('청소년입니다.')
+```
+
+### LAB 3-5
+```python
+speed = int(input('자동차의 속도를 입력하세요(단위 : km/h ): '))
+if speed >= 100:
+    print('고속')
+elif speed >= 60:
+    print('중속')
+else:
+    print('저속')
+# 출력:
+# 자동차의 속도를 입력하세요(단위 : km/h ): 13
+# 저속
+
+speed = int(input('자동차의 속도를 입력하세요(단위 : km/h ): '))
+if speed >= 100:
+    print('고속')
+elif speed >= 60:
+    print('중속')
+else:
+    print('저속')
+# 출력:
+# 자동차의 속도를 입력하세요(단위 : km/h ): 130
+# 고속
+```
+
+### LAB 3-6
+```python
+for _ in range(5):
+    print('Hello, Python!')
+# Hello, Python!
+# Hello, Python!
+# Hello, Python!
+# Hello, Python!
+# Hello, Python!
+
+for i in range(5):
+    print(i)
+# 0
+# 1
+# 2
+# 3
+# 4
+```
+
+### LAB 3-7
+```python
+print( list(range(1, 101)) )
+# 출력: [1, 2, 3, 4, 5, (생략), 100]
+
+print( list(range(2, 101, 2)) )
+# 출력: [2, 4, 6, 8, 10, (생략), 100]
+
+print( list(range(1, 101, 2)) )
+# 출력: [1, 3, 5, 7, 9, (생략), 99]
+
+print( list(range(-99, 0)) )
+# 출력: [-99, -98, -97, -96, -95, (생략), -1]
+```
+
+### LAB 3-8
+```python
+s = 0
+for i in range(1, 101):
+    s = s + i
+print(s)
+# 출력: 5050
+
+s = 0
+for i in range(0, 101, 2):
+    s = s + i
+print(s)
+# 출력: 2550
+
+s = 0
+for i in range(1, 101, 2):
+    s = s + i
+print(s)
+# 출력: 2500
+```
+
+### LAB 3-9
+```python
+for i in range(7):
+    s = ''
+    for j in range(6-i):
+        s = s + ' '
+    s = s + '#'
+    print(s)
+# 출력:
+#       #
+#      #
+#     #
+#    #
+#   #
+#  #
+# #
+```
+
