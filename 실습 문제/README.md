@@ -910,9 +910,9 @@ def benchmark(func):
     """
     import time
     def wrapper(*args, **kwargs):
-        t1 = time.clock_gettime_ns(time.CLOCK_REALTIME)
+        t1 = time.perf_counter()
         res = func(*args, **kwargs)
-        t2 = time.clock_gettime_ns(time.CLOCK_REALTIME)
+        t2 = time.perf_counter()
         print("{0} {1}".format(func.__name__, t2 - t1))
         return res
     return wrapper
