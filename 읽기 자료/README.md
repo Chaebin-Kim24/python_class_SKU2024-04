@@ -20,7 +20,6 @@ func(width=10, height=2)
 데코레이터
 ```python
 def debugging_1(some_func):
-
   def wrapper(x):
     print(x)
     some_func(x)
