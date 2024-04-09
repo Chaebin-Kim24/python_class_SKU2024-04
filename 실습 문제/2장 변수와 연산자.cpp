@@ -102,7 +102,7 @@ int main()
     * name_total = "Total";
     int amount_potato_pizza = 5, amount_steak_pizza = 2;
     std::cout << name_potato_pizza << " " << amount_potato_pizza << ": " << price_potato_pizza_total << "\n"
-    << name_steak_pizza << " " << amount_steak_pizza << ": " << price_potato_pizza_total << "\n"
+    << name_steak_pizza << " " << amount_steak_pizza << ": " << price_steak_pizza_total << "\n"
     << name_total << ": " << price_total << "\n"; // C++ 출력
     printf("%s %d: %d\n%s %d: %d\n %s: %d\n", name_potato_pizza, amount_potato_pizza, price_potato_pizza_total,
            name_steak_pizza, amount_steak_pizza, price_steak_pizza_total, name_total, price_total); // C 출력
@@ -145,12 +145,12 @@ int main()
     std::cout << "\nLAB 2-5-4\n";
     // 4. 변수 이름이 너무 길 때
     // 다음 주석처리된 코드에서 변수 이름을 짧게 바꿔보세요
-    // const char* pizza_delivery_reciept_string_for_this_pizza_order = "Total: 10,000 won";
-    // std::cout << pizza_delivery_reciept_string_for_this_pizza_order << std::endl;
-    // printf("%s\n",pizza_delivery_reciept_string_for_this_pizza_order);
-    const char* reciept = "Total: 10,000 won"; // C++ 출력
-    std::cout << reciept << std::endl; // C 출력
-    printf("%s\n", reciept);
+    // const char* pizza_delivery_receipt_string_for_this_pizza_order = "Total: 10,000 won";
+    // std::cout << pizza_delivery_receipt_string_for_this_pizza_order << std::endl;
+    // printf("%s\n",pizza_delivery_receipt_string_for_this_pizza_order);
+    const char* receipt = "Total: 10,000 won"; // C++ 출력
+    std::cout << receipt << std::endl; // C 출력
+    printf("%s\n", receipt);
     
     std::cout << "\nLAB 2-5-5\n";
     // 5. 변수 이름이 변수 내용과 다른 의미를 나타낼 때
