@@ -69,8 +69,6 @@ int main(int argc, const char * argv[]) {
      */
     
     /* c 코드 */
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF) {}
     printf("Please enter a number literal: ");
     
     /* 유저로부터 정수 리터럴을 입력 받음 */
