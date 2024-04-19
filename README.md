@@ -118,6 +118,7 @@ fib(5)
 코드: ____________
 
 ### 코딩 문제 예시 
+출처: [자바 언어 업데이트: 로컬 레코드 예시](https://docs.oracle.com/en/java/javase/22/language/records.html) 
 핸드폰 판매 대리점에 철수, 영희, 둘리, 마이콜, 희동이가 근무하고 있습니다.
 판매에 성공할 때마다 다음과 같이 일지에 "날짜, 판매원 이름, 판매 금액" 형식의 문자열을 리스트로 기록해놓습니다.
 ```python
@@ -236,11 +237,21 @@ print(sales)
 
 #     {판매 금액 : 판매자 리스트} 딕셔너리
 sales_sellers = {}
-sales_set
-for sale in sales:
+
+for sale in set(sales):
+       print("looping: sale", sale)
        sellers_list = []
        for seller in sellers_filtered_sales:
+              if sellers_filtered_sales[seller] == sale:
+                     sellers_list.append(seller)
+                     print("   found seller", seller)
+       sales_sellers[sale] = sellers_list
+       print(" "*6, sales_sellers)
 
+#    판매자 리스트
+for sale in sales:
+       sellers_sorted.append(sales_sellers[sale].pop(0))
+       print(sellers_sorted)
 ```
 
 ### 강의 피드백
