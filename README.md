@@ -136,6 +136,111 @@ def phone_sales(input):
 ```
 채점은 여러 테스트 케이스들에 대해서 통과한 개수를 기준으로 합니다.  
 
+# 입력값: 판매장부 문자열 리스트
+#        판매장부 문자열 형식: "연-월-일, 이름, 금액"
+
+in_ = ["2024-03-02, 철수, 1000",
+       "2024-03-03, 영수, 10000",
+       "2024-03-03, 영희, 1000"]
+
+# 출력값: 2024년 3월의 판매 금액이 높은 순서로 정렬된 이름 리스트
+out_ = ["영수", "철수", "영희"]
+
+
+
+# split 확인
+print(in_[0].split(', '))
+print(in_[0].split(', ')[0].split('-'))
+
+# 비교 연산자 확인
+print(in_[0].split(', ')[0].split('-')[0] == '2024')
+print(in_[0].split(', ')[0].split('-')[1] == '03')
+
+# 정수 변환 확인
+print(0 + int(in_[0].split(', ')[0].split('-')[2]))
+
+
+
+# 판매자별로 (연, 월, 금액) 튜플 리스트 생성
+sellers = {}
+for sales_str in in_:
+       date, seller, sale = sales_str.split(', ')
+       sale = int(sale)
+       year, month, day = date.split('-')
+
+       # 판매 정보를 튜플로 패킹
+       sale_tuple = year, month, sale
+       print(seller, sale_tuple)
+
+       if seller not in sellers:
+              sellers[seller] = [sale_tuple]
+       else:
+              sellers[seller].append(sale_tuple)
+
+       print(sellers)
+
+
+# 판매 날짜를 2024년 3월로 필터링
+target_year = '2024'
+target_month = '03'
+
+sellers_filtered = {}
+print("\n"*5)
+
+for seller in sellers:
+       target_sale_list = []
+       print("current seller:", seller)
+
+       for sale_tuple in sellers[seller]:
+              year, month, sale = sale_tuple
+              if year == target_year and month == target_month:
+                     target_sale_list.append(sale_tuple)
+                     print("   found target:", sale_tuple)
+              else:
+                     print("   not target:", sale_tuple)
+                     print("   ", year == target_year, month == target_month)
+
+       sellers_filtered[seller] = target_sale_list
+       print(' '*6,sellers_filtered)
+
+
+
+# 필터링 된 판매리스트에서 판매자별 총액 구하기
+sellers_filtered_sales = {}
+print("\n"*5)
+
+for seller in sellers_filtered:
+       sales = 0
+       print("current seller:", seller)
+
+       for sale_tuple in sellers_filtered[seller]:
+              year, month, sale = sale_tuple
+              sales = sales + sale
+              print("   added", sale)
+              print("   current sales", sales)
+
+       sellers_filtered_sales[seller] = sales
+       print(' '*6, sellers_filtered_sales)
+
+
+
+# 판매자를 판매 금액순으로 정렬하기
+sellers_sorted = []
+print("\n"*5)
+
+sales = list(sellers_filtered_sales.values())
+sales.sort(reverse=True)
+print(sales)
+
+#     {판매 금액 : 판매자 리스트} 딕셔너리
+sales_sellers = {}
+sales_set
+for sale in sales:
+       sellers_list = []
+       for seller in sellers_filtered_sales:
+
+
+
 ### 강의 피드백
 1. 수업 방식 중 기본 개념 설명
 * PPT에 처음 등장하는 모든 단어 및 내용을 설명하겠습니다.
