@@ -160,13 +160,25 @@ out_ = ["영수", "철수", "영희"]
 print(in_[0].split(', '))
 print(in_[0].split(', ')[0].split('-'))
 
+# 실행 결과:
+# ['2024-03-02', '철수', '1000']
+# ['2024', '03', '02']
+
+
 # 비교 연산자 확인
 print(in_[0].split(', ')[0].split('-')[0] == '2024')
 print(in_[0].split(', ')[0].split('-')[1] == '03')
 
+# 실행 결과:
+# True
+# True
+
+
 # 정수 변환 확인
 print(0 + int(in_[0].split(', ')[0].split('-')[2]))
 
+# 실행 결과:
+# 2
 
 
 # 판매자별로 (연, 월, 금액) 튜플 리스트 생성
@@ -186,6 +198,15 @@ for sales_str in in_:
               sellers[seller].append(sale_tuple)
 
        print(sellers)
+
+# 실행 결과:
+# 철수 ('2024', '03', 1000)
+# {'철수': [('2024', '03', 1000)]}
+# 영수 ('2024', '03', 10000)
+# {'철수': [('2024', '03', 1000)], '영수': [('2024', '03', 10000)]}
+# 영희 ('2024', '03', 1000)
+# {'철수': [('2024', '03', 1000)], '영수': [('2024', '03', 10000)], '영희': [('2024', '03', 1000)]}
+
 
 
 # 판매 날짜를 2024년 3월로 필터링
@@ -211,6 +232,17 @@ for seller in sellers:
        sellers_filtered[seller] = target_sale_list
        print(' '*6,sellers_filtered)
 
+# 실행 결과:
+# current seller: 철수
+#    found target: ('2024', '03', 1000)
+#        {'철수': [('2024', '03', 1000)]}
+# current seller: 영수
+#    found target: ('2024', '03', 10000)
+#        {'철수': [('2024', '03', 1000)], '영수': [('2024', '03', 10000)]}
+# current seller: 영희
+#    found target: ('2024', '03', 1000)
+#        {'철수': [('2024', '03', 1000)], '영수': [('2024', '03', 10000)], '영희': [('2024', '03', 1000)]}
+
 
 
 # 필터링 된 판매리스트에서 판매자별 총액 구하기
@@ -230,6 +262,20 @@ for seller in sellers_filtered:
        sellers_filtered_sales[seller] = sales
        print(' '*6, sellers_filtered_sales)
 
+# 실행 결과:
+# current seller: 철수
+#    added 1000
+#    current sales 1000
+#        {'철수': 1000}
+# current seller: 영수
+#    added 10000
+#    current sales 10000
+#        {'철수': 1000, '영수': 10000}
+# current seller: 영희
+#    added 1000
+#    current sales 1000
+#        {'철수': 1000, '영수': 10000, '영희': 1000}
+
 
 
 # 판매자를 판매 금액순으로 정렬하기
@@ -239,6 +285,10 @@ print("\n"*5)
 sales = list(sellers_filtered_sales.values())
 sales.sort(reverse=True)
 print(sales)
+
+# 실행 결과:
+# [10000, 1000, 1000]
+
 
 #     {판매 금액 : 판매자 리스트} 딕셔너리
 sales_sellers = {}
@@ -253,10 +303,25 @@ for sale in set(sales):
        sales_sellers[sale] = sellers_list
        print(" "*6, sales_sellers)
 
+# 실행 결과:
+# looping: sale 10000
+#    found seller 영수
+#        {10000: ['영수']}
+# looping: sale 1000
+#    found seller 철수
+#    found seller 영희
+#        {10000: ['영수'], 1000: ['철수', '영희']}
+
+
 #    판매자 리스트
 for sale in sales:
        sellers_sorted.append(sales_sellers[sale].pop(0))
        print(sellers_sorted)
+
+# 실행 결과:
+# ['영수']
+# ['영수', '철수']
+# ['영수', '철수', '영희']
 ```
 
 ### 강의 피드백
