@@ -103,6 +103,8 @@ x ** y > ~x
 ```
 1) True &ensp;&ensp;&ensp; 2) False &ensp;&ensp;&ensp; 3) -1 &ensp;&ensp;&ensp;&ensp; 4) 0 &ensp;&ensp;&ensp;&ensp; 5) 1  
 
+정답: 1) True
+
 ### 주관식 문제 예시
 다음 파이썬 코드의 결과가 5보다 작은 피보나치 수열이 되도록 주석으로 표시한 줄에 들어갈 알맞는 내용을 쓰시오
 ```python
@@ -117,8 +119,11 @@ fib(5)
 
 코드: ____________
 
+답안 예시: `a, b = b, a + b`
+
 ### 코딩 문제 예시 
 출처: [자바 언어 업데이트: 로컬 레코드 예시](https://docs.oracle.com/en/java/javase/22/language/records.html) 
+
 핸드폰 판매 대리점에 철수, 영희, 둘리, 마이콜, 희동이가 근무하고 있습니다.
 판매에 성공할 때마다 다음과 같이 일지에 "날짜, 판매원 이름, 판매 금액" 형식의 문자열을 리스트로 기록해놓습니다.
 ```python
