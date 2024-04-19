@@ -136,6 +136,8 @@ def phone_sales(input):
 ```
 채점은 여러 테스트 케이스들에 대해서 통과한 개수를 기준으로 합니다.  
 
+답안 예시
+```python
 # 입력값: 판매장부 문자열 리스트
 #        판매장부 문자열 형식: "연-월-일, 이름, 금액"
 
@@ -239,7 +241,7 @@ for sale in sales:
        sellers_list = []
        for seller in sellers_filtered_sales:
 
-
+```
 
 ### 강의 피드백
 1. 수업 방식 중 기본 개념 설명
