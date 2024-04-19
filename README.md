@@ -136,7 +136,7 @@ fib(5)
 답안 예시: `a, b = b, a + b`
 
 ### 코딩 문제 예시 
-출처: [자바 언어 업데이트: 로컬 레코드 예시](https://docs.oracle.com/en/java/javase/22/language/records.html) 
+출처: [오라클 자바 언어 업데이트: 로컬 레코드](https://docs.oracle.com/en/java/javase/22/language/records.html) 
 
 핸드폰 판매 대리점에 철수, 영희, 둘리, 마이콜, 희동이가 근무하고 있습니다.
 판매에 성공할 때마다 다음과 같이 일지에 "날짜, 판매원 이름, 판매 금액" 형식의 문자열을 리스트로 기록해놓습니다.
