@@ -82,6 +82,8 @@ print(answer)
 
 ---
 
+**참고사항**
+
 교과서 3장에서는 리스트를 만드는 방법과, 리스트 항목들에 대해서 반복문을 수행하는 방법과, 
 리스트에 항목을 추가하는 방법이 나와있습니다.
 
@@ -159,6 +161,135 @@ print(str1 == str2)
 ```
 
 ---
+
+**답안 예시1: 수업시간에 한 내용**
+```python
+# 주어진 입력값은 친구들 이름 문자열 리스트 friends와 선물을 주고받은 기록 문자열 리스트 gifts입니다.
+friends = ["mark", "john", "johnson", "michael", "jim"]
+# 선물 기록 문자열 양식: "준사람 받은사람"
+gifts = ["mark michael", "mark johnson", "jim john", "john jim", "jim john", "johnson mark", "mark jim"]
+
+# 친구이름을 키로 하고, 준 선물 개수 장부를 값으로 하는 딕셔너리를 만듭니다. 선물 장부도 딕셔너리입니다.
+# 딕셔너리 형식: {준사람이름 : 준선물개수장부}
+# 준선물개수장부 형식: {받은사람이름 : 받은선물개수}
+give_take_amount = {}
+print('-'*20, '\n각자가 선물을 준 장부 딕셔너리, 장부에는 선물 받은 사람 이름과 선물 개수가 적혀있음')
+for gift_str in gifts:
+    giver, taker = gift_str.split(' ')
+    print("\n준사람:",giver,", 받은 사람:", taker)
+    if giver in give_take_amount:
+        giver_dict = give_take_amount[giver]
+        print(' '*3, '딕셔너리에 있음:',giver, giver_dict)
+        if taker in giver_dict:
+            giver_dict[taker] += 1
+            print(' '*6, "장부에 선물 하나 추가됨", giver_dict)
+        else:
+            giver_dict[taker] = 1
+            print(' '*6, "장부에 이름이 추가됨", giver_dict)
+    else:
+        print(' '*3, '딕셔너리에 없음:', giver)
+        give_take_amount[giver] = {taker:1}
+        print(' '*6, "장부가 추가됨", give_take_amount[giver])
+    
+    print(' '*3, '현재 딕셔너리:', give_take_amount)
+
+# 각자 친구들에게 준 총 선물 개수가 몇개씩인지 딕셔너리를 만듭니다. 
+give_amount = {}
+print('\n'*2, '-'*20, '\n각자가 선물을 준 총 개수 딕셔너리')
+for giver in give_take_amount:
+    giver_dict = give_take_amount[giver]
+    print("\n준사람:", giver, ", 장부:", giver_dict)
+    value = 0
+    for taker in giver_dict:
+        value += giver_dict[taker]
+        print(' '*3, "계산된 항목:", taker, giver_dict[taker])
+    print(" "*6, "총합:", value)
+    give_amount[giver] = value
+    print(" "*3, "현재 딕셔너리:", give_amount)
+
+# 각자 친구들에게서 받은 선물의 총 개수가 몇개씩인지 딕셔너리를 만듭니다. 
+take_amount = {}
+print('\n'*2, '-'*20, '\n각자가 선물을 받은 총 개수 딕셔너리')
+for giver in give_take_amount:
+    giver_dict = give_take_amount[giver]
+    print("\n준사람:", giver, ", 장부:", giver_dict)
+
+    for taker in giver_dict:
+        if taker in take_amount:
+            take_amount[taker] += giver_dict[taker]
+            print(' '*3, "항목 업데이트:", taker, giver_dict[taker])
+        else:
+            take_amount[taker] = giver_dict[taker]
+            print(' '*3, "항목 추가:", taker, giver_dict[taker])
+
+    print(' '*3, "현재 딕셔너리:", take_amount)
+
+# 각자 친구들에게서 준 선물의 총 개수에 받은 선물의 총 개수가 몇개씩인지 딕셔너리를 만듭니다. 
+value_amount = {}
+print('\n'*2, '-'*20, '\n각자가 선물을 준 개수에서 받은 개수를 뺀 값 딕셔너리')
+for friend in friends:
+    print("\n현재 계산할 친구:", friend)    
+
+    my_give_amount = 0
+    if friend in give_amount:
+        my_give_amount = give_amount[friend]
+        print(' '*3, "준선물 개수:", my_give_amount)
+
+    my_take_amount = 0
+    if friend in take_amount:
+        my_take_amount = take_amount[friend]
+        print(' '*3, "받은선물 개수:", my_take_amount)
+
+    value_amount[friend] = my_give_amount - my_take_amount
+    print(' '*3, "준개수 - 받은개수:", value_amount[friend])
+
+# 최종적으로 각자 이번달에 받을 선물 개수를 구합니다. 
+
+will_take_amount = {}
+for friend in friends:
+    will_take_amount[friend] = 0
+print('\n'*2, '-'*20, '\n각자가 이번달에 받을 선물 딕셔너리')
+
+for friend in friends:
+    print("\n현재 계산할 친구:", friend)    
+
+    for another in friends:
+        if friend == another:
+            print(' '*3, "선물 없음: 본인")
+        else:
+            print(' '*3, "선물 받을지 확인할 친구:",another)
+            give = 0
+            if friend in give_take_amount and another in give_take_amount[friend]:
+                give = give_take_amount.get(friend).get(another)
+                print(' '*6, "준선물 개수:", give)
+            take = 0
+            if another in give_take_amount and friend in give_take_amount[another]:
+                take = give_take_amount.get(another).get(friend)
+                print(' '*6, "받은 선물 개수:", take)
+
+            subtract = give - take   
+            if subtract > 0:
+                will_take_amount[friend] += 1
+                print(' '*6, "선물 받을 예정: 더 많이 줬었음")
+            elif subtract < 0:
+                print(' '*6, "선물 없음: 더 적게 줬었음")
+            else:
+                print(' '*6, "주고받은 숫자가 같음")
+                if value_amount[friend] > value_amount[another]:
+                    will_take_amount[friend] += 1
+                    print(' '*6, "선물 받을 예정: 모두에게 준 선물의 총 수가 더 많음")
+                else:
+                    print(" "*6, "선물 없음: 모두에게 준 선물의 총 수가 작거나 같음")
+    
+    print('현재까지 계산된 받을 선물 딕셔너리', will_take_amount)
+
+# 받을 선물 개수의 최대값 출력
+print('\n받을 선물 개수 중 최대값:', max(list(will_take_amount.values())))
+
+
+```
+
+**답안 예시2**
 
 ```python
 # 주어진 입력값은 친구들 이름 문자열 리스트 friends와 선물을 주고받은 기록 문자열 리스트 gifts입니다.
