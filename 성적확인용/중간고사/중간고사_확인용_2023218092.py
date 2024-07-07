@@ -362,18 +362,19 @@ for i in range(0, len(p6_str)):
 # p7_dst_str을 p7_src_str에서 세칸 왼쪽으로 회전시켜서 구하시오 ??
 
 p7_src_str = "ABCDEFGHIJKLMNOPQURSTUVWXYZ"
-p7_dst_str = p7_src_str  # 코드를 입력할 위치
+p7_dst_str = p7_src_str[3:]+p7_src_str[:3]  # 코드를 입력할 위치
 
 
 # 정답:.[3:]+p7_src_str[:3]
 
+print(p7_dst_str)
 
 # 문제 13
 # a의 src_str에서 인덱스를 index 함수로 구한 뒤 dst_str의 해당 인덱스 문자열을
 # 반환하는 ciper(a) 함수에서 주석처리된 부분에 들어갈 코드를 쓰시오.
 
 def ciper(a):
-    return p7_dst_str  # 주석 처리된 부분
+    return ''# p7_dst_str.show(a)  # 주석 처리된 부분
 
 
 print(p7_src_str.index('A'), ciper('A'))
@@ -388,7 +389,7 @@ print(p7_src_str.index('B'), ciper('B'))
 # 주석 처리된 부분에 적절한 코드를 쓰시오
 
 def ciper_all(decoded_str):
-    # 주석처리된 부분
+    encoded_str = '' # 주석처리된 부분
     for a in decoded_str:
         if a in p7_src_str:
             encoded_str += ciper(a)
@@ -405,12 +406,7 @@ print(ciper_all(p7_my_str))
 
 # 문제 15
 
-p7과
-같이
-p8_src_str에서
-ciper(a), ciper_all(decoded_str)
-을
-구현하시오
+# p7과 같이 p8_src_str에서 ciper(a), ciper_all(decoded_str)을 구현하시오
 p8_src_str = "ABCDEFGHIJKLMNOPQURSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 p8_dst_str = p8_src_str[3:] + p8_src_str[:3]
 
