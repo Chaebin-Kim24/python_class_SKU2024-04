@@ -56,7 +56,7 @@ def my_str_3(item):
         return 'item'
 print("보기 3:", my_str_3([]), type(my_str_3([])))
 # 출력:
-# 보기 3: item <class 'str'>      (답)
+# 보기 3: item <class 'str'>      (오답)
 
 
 # 보기 4. 
