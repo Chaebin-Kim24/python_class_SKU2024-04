@@ -369,7 +369,7 @@ p6_str = "ABCDEFGHIJKLMNOPQURSTUVWXYZ"
 
 for i in range(0, len(p6_str)):
     _ = i
-    p6_str[i:]+p6_str[:i] #코드를 입력할 위치
+    print(p6_str[i:]+p6_str[:i]) #코드를 입력할 위치
 
 # p6_str[i:]+p6_str[:i]
 
@@ -381,6 +381,7 @@ p7_dst_str = p7_src_str [3:]+p7_src_str[:3] # 코드를 입력할 위치
 
 # 정답: [3:]+p7_src-str[:3]
 
+print(p7_dst_str)
 
 
 # 문제 13
