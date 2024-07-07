@@ -6,7 +6,7 @@
 
 
 '''
-10점 / 30점
+17점 / 30점
 
 ##### 객관식 문제 성적 (문항당 만점: 1점) #####
           제출한 답안     정답         점수   
@@ -479,9 +479,12 @@ def my_format_int(int_data, width=0):
     ret = '{int_data:>{width}}'
     return ret
 
+print(my_format_int(1, 5))
 
 # 문제 20-2
 # 실수 데이터와 필드폭과 정밀도를 받아서 해당 문자열을 출력하시오
 def my_format_float(float_data, width=0, precision=6):
     ret = '{float_data:>{width}.{precision}f}'
     return ret
+
+print(my_format_float(1.1, 5, 2))
