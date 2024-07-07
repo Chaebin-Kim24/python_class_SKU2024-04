@@ -490,7 +490,7 @@ def space_same_len_4(x):
 # print("보기 4:" + space_same_len_4("space") + "space")      # 에러 
 
 # 출력.
-# 에러: 숫자를 문자열에 이어붙일 수 없음
+# 에러: 숫자를 문자열에 이어붙일 수 없음        (오답)
 
 
 # 보기 5.
