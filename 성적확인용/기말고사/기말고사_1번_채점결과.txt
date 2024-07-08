@@ -1,0 +1,737 @@
+# 1번 문제
+
+뱀 행렬 문제: 사용자로부터 숫자 1보다 크고 10보다 작은 값 n을 입력으로 받아서
+다음과 같이 뱀의 몸통처럼 증가하는 이차원 배열을 출력하여라
+(이 배열은 마치 뱀의 몸통처럼 'ㄹ'과 같은 패턴을 그리며 수가 1씩 증가하는 형태
+의 배열이라서 편의상 뱀 행렬이라는 이름을 지었다.)
+
+
+# 점수 및 코멘트 (chatGPT의 답변을 바탕으로 채점됨)
+
+''' 채점 기준
+
+정확성 (2점): 코드가 뱀 행렬 출력을 (1 < n < 10)인 모든 n에 대해 기대되는 행렬을 출력하는가?
+n = 2, n = 9 등 특별한 케이스 들을 적절하게 처리하는가?
+
+가독성 및 코드 구조 (2점): 코드가 읽고 이해하기 쉬운가? 변수 이름이 의미가 있는가? 주석이 적절한가?
+함수, 클래스 등이 적절히 사용되어 코드가 잘 구조화되어 있는가?
+
+효율성 (1점): 불필요한 작업을 하지 않는가?
+
+에러 처리 (1점): 입력에 대한 확인을 적절하게 하는가? 안내 메세지와 에러 메세지를 명확히 내는가?
+
+'''
+
+# student 1
+n = int(input('n을 입력하시오 : '))
+for x in range(n):
+    if x % 2 == 0:
+        for y in range(1, n + 1):
+            print('{:3}'.format(y + n * x), end='')
+    else:
+        for y in range(n, 0, -1):
+            print('{:3}'.format(y + n * x), end='')
+
+    print('')
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 이중 루프가 조금 헷갈릴 수 있지만, 코드 구조가 깔끔함 (+1.5)
+# 효율성: 코드가 효율적임
+# 에러 처리: 입력값에 대한 확인 및 예외 처리를 하지 않음 (+0.5)
+
+# 점수: 5 / 6
+
+
+
+# student 2
+from functools import reduce
+
+n = int(input('정수 입력 : '))
+reverse = False
+for i in range(n):
+    if reverse:
+        for j in range(n * (i + 1) - 1, i * n - 1, -1):
+            print(j, end=' ')
+    else:
+        for j in range(n * i, n * (i + 1)):
+            print(j, end=' ')
+    reverse = not reverse
+    print()
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: reduce를 사용하는 것이 불필요하며, 복잡성을 증가시킴
+#          변수 이름이 조금 더 명확하게 쓰일 수 있음 (+1.5)
+# 효율성: 효율적임
+# 에러 처리: 입력값에 대한 확인 및 예외 처리를 하지 않음 (+0.5)
+
+# 점수: 5 / 6
+
+
+
+# student 3
+def s_matrix(n):
+    matrix = []
+    count = 1
+    for i in range(n):
+        row = []
+        if i % 2 == 0:
+            for j in range(n):
+                row.append(count)
+                count += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                row.append(count)
+                count += 1
+        matrix.append(row)
+
+    return matrix
+
+n = int(input("n을 입력하시오: "))
+result = s_matrix(n)
+
+for row in result:
+    print("\t".join(map(str, row)))
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 함수를 사용하여 구조화가 잘 되어있음
+# 효율성: 코드가 효율적임
+# 에러 처리: 입력값에 대한 확인 및 예외 처리를 하지 않음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+
+# student 4
+
+# 점수: 0 / 6
+
+
+
+# student 5
+def snake_array(n):
+    if n >= 10 or n <= 1:
+        raise ValueError('n은 1보다 크고 10보다 작은 값')
+
+    array = [[0] * n for _ in range(n)]
+    num = 1
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                array[i][j] = num
+                num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                array[i][j] = num
+                num += 1
+    return array
+
+def print_array(array):
+    for row in array:
+        print(' '.join(map(str, row)))
+
+# 사용자에게 직접 입력 받기
+n = int(input('1보다 크고 10보다 작은 값을 입력하세요: '))
+snake_array = snake_array(n)
+print_array(snake_array)
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 함수를 사용하여 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 에러 처리: 입력을 적절하게 처리함
+
+# 점수: 6 / 6
+
+
+
+# student 6
+def snake_matrix(n):
+    matrix = [[0] * n for _ in range(n)]
+    num = 1
+
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                matrix[i][j] = num
+                num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                matrix[i][j] = num
+                num += 1
+
+    return matrix
+
+
+
+n = int(input("Enter a number (1 < n < 10): "))
+
+snake = snake_matrix(n)
+for row in snake:
+    print(" ".join(map(str, row)))
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 함수를 사용하여 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 에러 처리: 입력값에 대한 확인 및 예외 처리를 하지 않음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+
+# student 7
+n = int(input("n을 입력하시오: "))
+
+matrix = [[0] * n for _ in range(n)]
+
+num = 1
+for i in range(n):
+    if i % 2 == 0:
+        matrix[i] = list(range(num, num + n))
+    else:
+        matrix[i] = list(range(num + n - 1, num - 1, -1))
+    num += n
+
+for row in matrix:
+    print(' '.join(map(str, row)))
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력을 직접 받지만 확인하지 않음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+
+# student 8
+n = int(input("n을 입력하세요: "))
+
+for i in range(1,n+1,1):
+    print(i,end='  ')
+print('')
+for k in range(n+n,n,-1):
+    print(k,end='  ')
+print('')
+for f in range(n+n+1,n+n+n+1,1):
+    print(f,end=' ')
+print('')
+for k in range(n+n+n+n,n+n+n,-1):
+    print(k,end=' ')
+print('')
+for f in range(n+n+n+n+1,n+n+n+n+n+1,1):
+    print(f,end=' ')
+print('')
+
+# 정확성: 본 코드는 뱀 행렬을 특정 형식으로 출력 (+1)
+# 코드 구조: 코드가 복잡하고 읽기 어려움 (+1)
+# 효율성: 비효율적이고 반복적임 (+0.5)
+# 입력 처리: 입력을 직접 받지만 확인하지 않음 (+0.5)
+
+# 점수: 3 / 6
+
+
+
+# student 9
+
+# 점수: 0 / 6
+
+
+
+# student 10
+def snake(n):
+    array = [[0] * n for _ in range(n)]
+    num = 1
+
+    for i in range(n):
+        for j in range(n):
+            array[i][j if i % 2 == 0 else n - 1 - j] = num
+            num += 1
+
+    return array
+
+n = int(input('n을 입력하시오 : '))
+if n > 1 and n < 10:
+    result = snake(n)
+    for row in result:
+        print(' '.join(f'{num:2d}' for num in row))
+else:
+    print('1<n<10')
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 6 / 6
+
+
+
+# student 11
+def snake_matrix(n):
+    matrix = [[0] * n for _ in range(n)]
+    num = 1
+
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                matrix[i][j] = num
+                num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                matrix[i][j] = num
+                num += 1
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print('\t'.join(map(str, row)))
+
+n = int(input("insert n: "))
+if 1 < n < 10:
+    result_matrix = snake_matrix(n)
+    print_matrix(result_matrix)
+else:
+    print("Input value is out of range")
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 6 / 6
+
+
+# student 12
+def snake_body(n) :
+    body = [[0]* n for _ in range(n)]
+
+    count = 1
+
+    for a in range(n) :
+        if a % 2 == 0 :
+            for b in range(n) :
+                body[a][b] = count
+                count += 1
+        else:
+        	for b in range(n - 1, -1, -1) :
+        	    body[a][b] = count
+	            count += 1
+    return body
+
+while True:
+    n = int(input("n을 입력하시오 : "))
+    if 1 < n < 10 :
+        break
+    else :
+        print("n을 입력하시오 : ")
+        # except ValueError :
+
+result = snake_body(n)
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 6 / 6
+
+
+
+# student 13
+def snake_matrix(n):
+    matrix = [[0] * n for _ in range(n)]
+    num = 1
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                matrix[i][j] = num
+                num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                matrix[i][j] = num
+                num += 1
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print("\t".join(map(str, row)))
+
+# Example usage:
+n = int(input("n을 입력하시오: "))
+if 1 < n < 10:
+    result = snake_matrix(n)
+    print_matrix(result)
+else:
+    print("Input must be greater than 1 and less than 10.")
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 6 / 6
+
+
+# student 14
+
+# 점수: 0 / 6
+
+
+
+# student 15
+n = int(input("n을 입력하세요"))
+if n < 1 or n >= 10:
+    print("n 은 1보다 크고 10보다 작아야 함")
+else:
+    result = []
+    current_num = 1
+    for i in range(n):
+        row = list(range(current_num, current_num + n))
+
+        if i % 2 == 1:
+            row = row[::-1]
+            result.append(row)
+            current_num += n
+
+    for row in result:
+        print(' '.join(map(str, row)))
+
+# 정확성: 뱀 행렬이 정확하게 출력되지 않음 (+1)
+# 코드 구조: 구조화가 잘 되어있지만 논리가 명확하지 않음 (+1)
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 4 / 6
+
+
+
+# student 16
+u_num = int(input('n을 입력하시오 : '))
+u_list = [x for x in range(1, u_num ** 2 + 1)]
+for i in range(u_num):
+    if i % 2 == 0:
+        print(u_list[u_num * i:u_num * i + u_num:])
+    else:
+        print(u_list[u_num * i:u_num * i + u_num:][::-1])
+
+# 정확성: 뱀 행렬이 정확하게 출력됨
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+
+# student 17
+n = int(input('n을 입력하시오 : '))
+if (n == 5):
+    print(' 1  2  3  4  5')
+    print('10  9  8  7  6')
+    print('11 12 13 14 15')
+    print('20 19 18 17 16')
+    print('21 22 23 24 25')
+elif (n == 6):
+    print(' 1  2  3  4  5  6')
+    print('12 11 10  9  8  7')
+    print('13 14 15 16 17 18')
+    print('24 23 22 21 20 19')
+    print('25 26 27 28 29 30')
+    print('36 35 34 33 32 31')
+else:
+    print('0')
+
+# 정확성: 뱀 행렬이 일부 입력에 대해서만 출력됨 (+1)
+# 코드 구조: 논리 구조가 없음 (+1)
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 있음
+
+# 점수: 4 / 6
+
+
+
+# student 18
+def 뱀_행렬(n):
+    matrix = [[0] * n for _ in range(n)]
+    num = 1
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                matrix[i][j] = num
+            num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                matrix[i][j] = num
+                num += 1
+    return matrix
+
+n = int(input())
+while n <= 1 or n >= 10:
+    n = int(input())
+result = 뱀_행렬(n)
+
+# 정확성: 뱀 행렬이 정확하게 출력되지 않음 (+1)
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 있음
+
+# 점수: 5 / 6
+
+
+
+# student 19
+print('n을 입력하시오 : ', n)
+arr([n][n])
+for i in range(
+        n=i + 1
+)
+
+# 정확성: 출력되는 내용이 없음
+# 코드 구조: 구조가 없음
+# 효율성: 비효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음
+
+# 점수: 0 / 6
+
+
+
+# student 20
+n = int(input('n을 입력하시오 : '))
+c = 0
+while c < n:
+    for i in range(1,n+1):
+        if(i==1):
+            for k in range(i,n+1):
+                print(k, end=' ')
+            print()
+        else:
+            for k in range(i,n+1):
+                print(k+n*2, end=' ')
+            print()
+        c += 2
+    for j in range(n+1,1,-1):
+        if(j==n+1):
+            for k in range(j,n+1):
+                print(k, end=' ')
+            print()
+        else:
+            for k in range(j,n+1):
+                print(k+n*2, end=' ')
+            print()
+
+# 정확성: 잘못된 출력 (+1)
+# 코드 구조: 구조가 복잡하고 읽기 어려움 (+1)
+# 효율성: 비효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음
+
+# 점수: 2 / 6
+
+
+
+# student 21
+n = int(input('n을 입력하시오 : '))
+stack = 0
+for i in range(n) :
+	L = []
+	for _ in range(n) :
+		stack += 1
+		L.append(stack)
+	if i % 2 == 1 :
+		L = L[::-1]
+	for i in L :
+		print('{:3d}'.format(i), and = '')
+print()
+
+# 정확성: 올바른 출력
+# 코드 구조: 들여쓰기가 잘못되고 오타가 있음 (+1)
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 4.5 / 6
+
+
+
+# student 22
+a=int(input("n을 입력하시오 :"))
+
+for i in range(a):
+    for j in range(i<a):
+        if(i>0):
+            print(i,j)
+        else:
+            print('0')
+
+# 정확성: 잘못된 출력 (+1)
+# 코드 구조: 문제를 해결하는 방법이 명확하지 않음 (+1)
+# 효율성: 비효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음
+
+# 점수: 2 / 6
+
+
+
+# student 23
+def s_matrix(n):
+    matrix = []
+    count = 1
+    for i in range(n):
+        row = []
+        if i % 2 == 0:
+            for j in range(n):
+                row.append(count)
+                count += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                row.append(count)
+                count += 1
+        matrix.append(row)
+
+    return matrix
+
+n = int(input("n을 입력하시오: "))
+result = s_matrix(n)
+
+for row in result:
+    print("\t".join(map(str, row)))
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+
+# student 24
+def create_snake_matrix(n):
+    matrix = [[0] * n for _ in range(n)]
+    num = 1
+
+    for i in range(n):
+        if i % 2 == 0:
+            for j in range(n):
+                matrix[i][j] = num
+                num += 1
+        else:
+            for j in range(n - 1, -1, -1):
+                matrix[i][j] = num
+                num += 1
+
+    return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        print(*row)
+
+n = int(input("n 입력: "))
+snake_matrix = create_snake_matrix(n)
+print_matrix(snake_matrix)
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 5.5 / 6
+
+
+# student 25
+n=int(input('n을 입력하시오 : '))
+a=[]
+b=[]
+c=[]
+d=[]
+p=1
+z=n
+for i in range(n):
+    if i%2==0:
+        for k in range(z):
+            a.append(p)
+            p+=1
+        print(*a)
+        a.clear()
+    elif i%2==1:
+        u=(p-1)*2
+        for k in range(z):
+            b.append(u-k)
+            p+=1
+        print(*b)
+        b.clear()
+
+# 정확성: 출력이 부정확함 (+1)
+# 코드 구조: 코드가 복잡하고, 변수 이름이 불명확함 (+1)
+# 효율성: 리스트가 많고 비효율적임(+0.5)
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 3 / 6
+
+
+
+# student 26
+def print_snake_matrix(n):
+    # n x n 크기의 뱀 행렬 초기화
+    snake_matrix = [[0] * n for _ in range(n)]
+    num = 1  # 시작 숫자
+    for i in range(n):
+        if i % 2 == 0:
+            # 짝수 번째 행: 왼쪽에서 오른쪽으로 채우기
+            for j in range(n):
+                snake_matrix[i][j] = num
+                num += 1
+        else:
+            # 홀수 번째 행: 오른쪽에서 왼쪽으로 채우기
+            for j in range(n - 1, -1, -1):
+                snake_matrix[i][j] = num
+                num += 1
+    # 결과 출력
+    for row in snake_matrix:
+        print('\t'.join(map(str, row)))
+
+def main1():
+    # 사용자로부터 n 입력 받기
+    n = int(input("n을 입력하시오 : "))
+
+    # 뱀 행렬 출력
+    print_snake_matrix(n)
+
+if __name__ == "__main__":
+    main1()
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 구조화가 잘 되어있음
+# 효율성: 효율적임
+# 입력 처리: 입력에 대한 예외처리가 되어 있음
+
+# 점수: 6 / 6
+
+
+
+# student 27
+n = int(input('n을 입력하시오 :'))
+n_list = []
+for i in range(1, n ** 2 + 1):
+    n_list.append(i)
+for k in n_list:
+    if k == 1:
+        n_list_f = n_list[0:n]
+        for f in n_list_f:
+            print(f, end='')
+        print()
+    if k % n == 0 and (k // n) % 2 != 0:
+        n_list_r = n[k:k + n]
+        n_list_r.sort(reverse=True)
+        for r in n_list_r:
+            print(r, end='')
+        print()
+    if k & n == 0 and (k // n) % 2 == 0:
+        n_list_a = n_list[k:k + n]
+        for a in n_list_a:
+            print(a, end='')
+        print()
+
+# 정확성: 본 코드는 정확하게 뱀 행렬을 출력
+# 코드 구조: 오타가 많아서 읽기 어렵고, 복잡함 (+1)
+# 효율성: 비효율적임 (+0.5)
+# 입력 처리: 입력에 대한 예외처리가 없음 (+0.5)
+
+# 점수: 4 / 6
